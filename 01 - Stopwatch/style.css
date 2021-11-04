@@ -1,0 +1,11 @@
+body{
+    background: rgb(238,174,202);
+    background: linear-gradient(225deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%) fixed; 
+}
+
+.l-spacing-10{
+    letter-spacing: 10px;
+}
+.l-spacing-5{
+    letter-spacing: 5px;
+}
