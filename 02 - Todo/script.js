@@ -3,22 +3,20 @@ let todoDetail = document.querySelector('#todo-detail')
 let todoList = document.querySelector('#todo-list')
 let form = document.querySelector('form')
 let btnAdd = document.querySelector('#btn-add')
-let todos=[
-    {title:"abooo", detail:"ddddddddddd"},
-    {title:"abosoo", detail:"ddddddddddd"}
-]
 
-window.localStorage.setItem("todos",JSON.stringify(todos))
+let todos = JSON.parse(localStorage.getItem("todos")) ? JSON.parse(localStorage.getItem("todos")) : []
+localStorage.setItem("todos",JSON.stringify(todos))
 btnAdd.addEventListener('click',todoAdd)
-let item = JSON.parse(window.localStorage.getItem("todos"))
-//localStorage.setItem("todos",JSON.stringify({title:"asdas",detail:"ddddd"}))
+//localStorage.clear()
+
+
 function todoAdd(){
     let title = todoTitle.value
     let detail = todoDetail.value
     if(title && detail){
         todoList.innerHTML += createTodoCard(title, detail)
-        todos.push({title:todoTitle.value,detail:todoDetail.value})
-        window.localStorage.setItem("todos",JSON.stringify(todos))
+        todos.push({title:title,detail:detail})
+        localStorage.setItem("todos",JSON.stringify(todos))
         resetInput()
     }
   
@@ -42,6 +40,3 @@ function resetInput(){
     todoDetail.value = ""
 }
 
-function load() {
-    let todos2 = JSON.parse(window.localStorage.getItem())
-}
