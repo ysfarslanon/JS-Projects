@@ -7,3 +7,6 @@ button{
 textarea{
     resize: none;
 }
+.completedTodo{
+    text-decoration: line-through;
+}
