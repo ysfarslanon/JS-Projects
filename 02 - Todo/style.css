@@ -4,3 +4,6 @@ body{
 button{
     width: 200px;
 }
+textarea{
+    resize: none;
+}

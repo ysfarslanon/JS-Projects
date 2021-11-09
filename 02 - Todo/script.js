@@ -11,7 +11,7 @@ let todos = JSON.parse(localStorage.getItem("todos")) ? JSON.parse(localStorage.
 btnAdd.addEventListener('click',todoAdd)
 btnRemoveAllTodo.addEventListener('click',removeAllTodos)
 // load function
-loadTodosCard()
+loadTodosCard(todos)
 // functions
 function todoAdd(){
     let title = todoTitle.value
@@ -49,10 +49,10 @@ function resetInput(){
     todoDetail.value = ""
 }
 
-function loadTodosCard(){
-    for (let i = 0; i < todos.length; i++) {
-        todoList.innerHTML += createTodoCard(todos[i].title, todos[i].detail)
-    }
+function loadTodosCard(array){
+    array.forEach(item => {
+        todoList.innerHTML += createTodoCard(item.id, item.title, item.detail)
+    })
 }
 
 function removeAllTodos(){
