@@ -10,3 +10,6 @@ textarea{
 .completedTodo{
     text-decoration: line-through;
 }
+.alertInput{
+    box-shadow: 0px 0px 10px red;
+}

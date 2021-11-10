@@ -5,6 +5,7 @@ let todoList = document.querySelector("#todo-list");
 let form = document.querySelector("form");
 let btnAdd = document.querySelector("#btn-add");
 let btnRemoveAllTodo = document.querySelector("#btn-remove-all");
+let inputInfo = document.querySelector("#inputInfo")
 // variables
 let todos = JSON.parse(localStorage.getItem("todos"))
   ? JSON.parse(localStorage.getItem("todos"))
@@ -16,15 +17,18 @@ btnRemoveAllTodo.addEventListener("click", removeAllTodos);
 loadTodosCard(todos);
 // functions
 function todoAdd() {
+  let id = todos.length + 1;
   let title = todoTitle.value;
   let detail = todoDetail.value;
-  let id = todos.length + 1;
 
   if (title && detail) {
+    hideAlerts()
     todoList.innerHTML += createTodoCard(id, title, detail);
     todos.push({ id: id, title: title, detail: detail });
     localStorage.setItem("todos", JSON.stringify(todos));
     resetInput();
+  }else{
+    showAlerts()
   }
 }
 
@@ -89,4 +93,18 @@ function deleteByID(ID, array) {
       array.splice(i, 1);
     }
   }
+}
+
+function showAlerts(){
+  todoTitle.classList.add("alertInput")
+  todoDetail.classList.add("alertInput")
+  inputInfo.classList.remove("d-none")
+  inputInfo.classList.add("d-block")
+}
+
+function hideAlerts(){
+  todoTitle.classList.remove("alertInput")
+  todoDetail.classList.remove("alertInput")
+  inputInfo.classList.remove("d-block")
+  inputInfo.classList.add("d-none")
 }
