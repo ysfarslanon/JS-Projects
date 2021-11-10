@@ -8,13 +8,7 @@ let btnRemoveAllTodo = document.querySelector("#btn-remove-all");
 // variables
 let todos = JSON.parse(localStorage.getItem("todos"))
   ? JSON.parse(localStorage.getItem("todos"))
-  : [
-      { id: 1, title: "başlık1", detail: "detay1" },
-      { id: 2, title: "başlık2", detail: "detay2" },
-      { id: 3, title: "başlık3", detail: "detay3" },
-      { id: 4, title: "başlık4", detail: "detay4" },
-      { id: 5, title: "başlık5", detail: "detay5" },
-    ];
+  : [];
 // events
 btnAdd.addEventListener("click", todoAdd);
 btnRemoveAllTodo.addEventListener("click", removeAllTodos);
@@ -44,11 +38,11 @@ function createTodoCard(id, title, detail) {
                         <p class="card-text">${detail}</p>
                     </div>
                     <div class="card-footer text-center">
-                        <button class="btn btn-outline-warning me-lg-4 mb-2 mb-lg-0" id=btn-${id} onclick="doneTodo(${id})">Done</button>
-                        <button class="btn btn-outline-danger ms-lg-4">Remove</button>
+                        <button class="btn btn-outline-warning me-lg-4 mb-2 mb-lg-0" id=btn-done-${id} onclick="doneTodo(${id})">Done</button>
+                        <button class="btn btn-outline-danger ms-lg-4" id=btn-remove-${id} onclick="removeTodo(${id})">Remove</button>
                     </div>
                 </div>
-    `;
+    `
 }
 
 function resetInput() {
@@ -70,14 +64,26 @@ function removeAllTodos() {
   todoList.innerHTML = "";
 }
 
-
 function doneTodo(ID) {
   let card = document.querySelector(`#card-${ID}`);
   if (card.classList.contains("completedTodo") && card.classList.contains("text-success")) {
-    card.classList.remove("completedTodo");
-    card.classList.remove("text-success")
-} else {
-    card.classList.add("completedTodo");
-    card.classList.add("text-success")
+    card.classList.remove("completedTodo", "text-success")
+  } else {
+    card.classList.add("completedTodo", "text-success")
+  }
+}
+
+function removeTodo(ID) {
+  let card = document.querySelector(`#card-${ID}`);
+  card.remove();
+  deleteByID(ID,todos);
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function deleteByID(ID, array) {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].id == ID) {
+      array.splice(i, 1);
+    }
   }
 }
