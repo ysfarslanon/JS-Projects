@@ -32,10 +32,10 @@ function createTodoCard(id, title, detail) {
   return `
     <div class="card shadow-lg mb-3" id="card-${id}">
                     <div class="card-header">
-                        <h5 class="card-title">${title}</h5>
+                        <h5 class="card-title" id="title-${id}">${title}</h5>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">${detail}</p>
+                        <p class="card-text" id="detail-${id}">${detail}</p>
                     </div>
                     <div class="card-footer text-center">
                         <button class="btn btn-outline-warning me-lg-4 mb-2 mb-lg-0" id=btn-done-${id} onclick="doneTodo(${id})">Done</button>
@@ -65,11 +65,14 @@ function removeAllTodos() {
 }
 
 function doneTodo(ID) {
-  let card = document.querySelector(`#card-${ID}`);
-  if (card.classList.contains("completedTodo") && card.classList.contains("text-success")) {
-    card.classList.remove("completedTodo", "text-success")
+  let title = document.querySelector(`#title-${ID}`)
+  let detail = document.querySelector(`#detail-${ID}`)
+  if (title.classList.contains("completedTodo")) {
+    title.classList.remove("completedTodo", "text-success")
+    detail.classList.remove("completedTodo", "text-success")
   } else {
-    card.classList.add("completedTodo", "text-success")
+    title.classList.add("completedTodo", "text-success")
+    detail.classList.add("completedTodo", "text-success")
   }
 }
 
