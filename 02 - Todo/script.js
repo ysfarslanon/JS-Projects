@@ -83,7 +83,7 @@ function doneTodo(ID) {
 function removeTodo(ID) {
   let card = document.querySelector(`#card-${ID}`);
   card.remove();
-  deleteByID(ID,todos);
+  deleteByID();
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
