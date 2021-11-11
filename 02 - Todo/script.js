@@ -14,7 +14,7 @@ let todos = JSON.parse(localStorage.getItem("todos"))
 btnAdd.addEventListener("click", todoAdd);
 btnRemoveAllTodo.addEventListener("click", removeAllTodos);
 // load function
-loadTodosCard(todos);
+loadTodosCard();
 // functions
 function todoAdd() {
   let id = todos.length + 1;
@@ -54,8 +54,8 @@ function resetInput() {
   todoDetail.value = "";
 }
 
-function loadTodosCard(array) {
-  array.forEach((item) => {
+function loadTodosCard() {
+  todos.forEach((item) => {
     todoList.innerHTML += createTodoCard(item.id, item.title, item.detail);
   });
 }
@@ -87,10 +87,10 @@ function removeTodo(ID) {
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
-function deleteByID(ID, array) {
-  for (let i = 0; i < array.length; i++) {
-    if (array[i].id == ID) {
-      array.splice(i, 1);
+function deleteByID(ID) {
+  for (let i = 0; i < todos.length; i++) {
+    if (todos[i].id == ID) {
+      todos.splice(i, 1);
     }
   }
 }
