@@ -3,9 +3,13 @@ const dog = document.querySelector("#dog")
 const btnRandomDog = document.querySelector("#btnRandomDog")
 const cat = document.querySelector("#cat")
 const btnRandomCat = document.querySelector("#btnRandomCat")
+const fox = document.querySelector("#fox")
+const btnRandomFox = document.querySelector("#btnRandomFox")
+
 // events
 btnRandomDog.addEventListener("click", getRandomDog)
 btnRandomCat.addEventListener("click", getRandomCat)
+btnRandomFox.addEventListener("click", getRandomFox)
 
 // functions
 function getRandomDog() {
@@ -28,4 +32,13 @@ function getRandomCat(){
           cat.innerHTML = `
           <img src="${data.file}" class="img-fluid"/>`
       })
+}
+
+function getRandomFox(){
+    fetch("https://randomfox.ca/floof/")
+    .then(res=>res.json())
+    .then(data =>{
+        fox.innerHTML = `
+        <img src="${data.image}" class="img-fluid"/>`
+    })
 }
