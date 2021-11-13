@@ -1,0 +1,1 @@
+# Rastgele tavsiye notları
