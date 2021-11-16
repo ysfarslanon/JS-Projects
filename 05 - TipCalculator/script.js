@@ -10,17 +10,17 @@ let totalBillText = document.querySelector("#totalBill");
 let billPerPerson = document.querySelector("#billPerPerson");
 
 // variables
-let numberOfPerson = inputPeople.value;
-let bill = inputBill.value;
-let tip = tipProgress.value;
-let totalBill = 0;
+let bill = Number(inputBill.value);
+let tipPercent = Number(tipProgress.value);
+let tip = 0;
 
 function decreaseTip() {
   tipProgress.value =
     tipProgress.value <= 10
       ? (tipProgress.value = 10)
       : (tipProgress.value -= 5);
-  tip = tipProgress.value;
+  tipPercent = tipProgress.value;
+  tip = bill * (tipPercent / 100)
   writeTipDetails();
 }
 
@@ -29,15 +29,21 @@ function increaseTip() {
     tipProgress.value >= 100
       ? (tipProgress.value = 100)
       : (tipProgress.value += 5);
-  tip = tipProgress.value;
+  tipPercent = tipProgress.value;
+  tip = bill * (tipPercent / 100)
   writeTipDetails();
 }
 
 function writeTipDetails() {
   tipText.innerHTML = `Bahşiş: (%${tipProgress.value.toFixed()})`;
-  tipResultText.innerHTML = `Bahşiş miktarı: ${(bill * (tip / 100)).toFixed(2)}`;
+  tipResultText.innerHTML = `Bahşiş miktarı: ${tip.toFixed(2)}`;
 }
 
 function calculateBill() {
-  
+  let numberOfPerson = Number(inputPeople.value)
+  totalBill = (bill + tip).toFixed(2);
+  let perPersonBill = (totalBill / numberOfPerson).toFixed(2);
+  totalBillText.innerHTML = `Toplam hesap: ${totalBill}`
+  billPerPerson.innerHTML =  `Kişi başı hesap: ${perPersonBill}`
+
 }
