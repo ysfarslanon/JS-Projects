@@ -16,8 +16,8 @@ let tip = 0;
 
 function decreaseTip() {
   tipProgress.value =
-    tipProgress.value <= 10
-      ? (tipProgress.value = 10)
+    tipProgress.value <= 0
+      ? (tipProgress.value = 0)
       : (tipProgress.value -= 5);
   tipPercent = tipProgress.value;
   tip = bill * (tipPercent / 100)
@@ -45,5 +45,5 @@ function calculateBill() {
   let perPersonBill = (totalBill / numberOfPerson).toFixed(2);
   totalBillText.innerHTML = `Toplam hesap: ${totalBill}`
   billPerPerson.innerHTML =  `Kişi başı hesap: ${perPersonBill}`
-
+  writeTipDetails()
 }
