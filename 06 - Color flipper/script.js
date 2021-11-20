@@ -1,5 +1,6 @@
 const btnHex = document.getElementById("btnHex");
 const btnRgb = document.getElementById("btnRgb");
+const btnCopy = document.getElementById("btnCopy");
 const colorText = document.getElementById("colorText");
 const colors=['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F',];
 
@@ -39,3 +40,9 @@ function applyRgbColor() {
     colorText.innerHTML = createRgbColor()
 }
 btnRgb.addEventListener("click",applyRgbColor)
+
+function copy() {
+    const cb = navigator.clipboard
+    cb.writeText(colorText.innerHTML).then(()=> alert(`Copied: ${colorText.innerHTML}`))
+}
+btnCopy.addEventListener("click",copy)
