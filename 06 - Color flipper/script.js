@@ -1,5 +1,6 @@
 const btnHex = document.getElementById("btnHex");
 const btnRgb = document.getElementById("btnRgb");
+const colorText = document.getElementById("colorText");
 const colors=['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F',];
 
 function getRandomNumber(limit) {
@@ -16,7 +17,7 @@ function createHexColor() {
 
 function applyHexColor() {
     document.body.style.backgroundColor = createHexColor()
-    document.getElementById("colorText").innerHTML = createHexColor()
+    colorText.innerHTML = createHexColor()
 }
 
 btnHex.addEventListener("click",applyHexColor)
@@ -35,6 +36,6 @@ function createRgbColor() {
 
 function applyRgbColor() {
     document.body.style.backgroundColor = createRgbColor()
-    document.getElementById("colorText").innerHTML = createRgbColor()
+    colorText.innerHTML = createRgbColor()
 }
 btnRgb.addEventListener("click",applyRgbColor)
