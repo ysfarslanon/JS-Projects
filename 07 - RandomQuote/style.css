@@ -1,0 +1,29 @@
+body{
+    background: linear-gradient(180deg, #FFF0BA, #A8E3B3) fixed;
+    font-family: Lobster;
+    font-size: 20px;
+}
+.container{
+    width: 40%;
+    height: auto;
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 20px;
+}
+.quote{
+    font-size: 25px;
+}
+button{
+    border: none;
+    background-color: rgba(255,255,255, 0.4);
+    padding: 20px;
+    width: 150px;
+    border-radius: 10px;
+    font-family: Lobster;
+    font-size: 20px;
+}
+button:hover{
+    box-shadow: 0 0 10px white;
+}
