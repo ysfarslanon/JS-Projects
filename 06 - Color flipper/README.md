@@ -3,6 +3,7 @@
 ## Giriş
 
 Rastgele hexadecimal ve rgb olarak renk üreten ve üretilen rengi arkaplan rengi olarak ayarlayan gerektiğinde rengi kopyalayalabildiğimiz JS dilinde yazılan projedir.
+CSS ve Bootstrap v5.1 kullanılmıştır.
 
 ## Değişkenler
 
